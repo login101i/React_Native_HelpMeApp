@@ -20,7 +20,7 @@ export const RestaurantScreen = () => {
 	const onChangeSearch = (query) => setSearchQuery(query);
 
 	return (
-		<SafeAreaView>
+		<SafeArea>
 			<Spacer position="top" size="large">
 				<SearchContainer>
 					<Searchbar
@@ -45,6 +45,6 @@ export const RestaurantScreen = () => {
 				keyExtractor={(item) => item.name}
 				contentContainerStyle={{ padding: 16 }}
 			/>
-		</SafeAreaView>
+		</SafeArea>
 	);
 };
