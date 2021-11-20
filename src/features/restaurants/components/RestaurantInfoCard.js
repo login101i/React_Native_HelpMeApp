@@ -2,6 +2,7 @@
 import React from "react";
 import { Text } from "react-native";
 
+
 // import { SvgXml } from "react-native-svg";
 
 import star from "../../../assets/star";

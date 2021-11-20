@@ -11,17 +11,18 @@ export const RestaurantCard = styled(Card)`
 	background-color: ${(props) => props.theme.colors.bg.primary};
 	width: 100%;
 	display: flex;
-	align-items: center;
+	padding:${props =>props.theme.space[2]};
 	margin-bottom: ${(props) => props.theme.space[3]};
 `;
 
 export const CardCover = styled(Card.Cover)`
-	padding: ${(props) => props.theme.space[3]};
+	padding: ${(props) => props.theme.space[2]};
 	background-color: ${(props) => props.theme.colors.bg.primary};
+	width: 100%;
 `;
 
 export const CardContent = styled.View`
-	padding: ${(props) => props.theme.space[2]};
+	padding: ${(props) => props.theme.space[1]};
 `;
 
 export const Address = styled.Text`
@@ -50,4 +51,3 @@ export const SectionEnd = styled.View`
 	justify-content: flex-end;
 	align-items: center;
 `;
-
