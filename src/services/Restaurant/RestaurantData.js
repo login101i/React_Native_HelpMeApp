@@ -1,7 +1,7 @@
 {
-    "html_attributions"= [],
-    "next_page_token"= "some token",
-    "results"= [
+    "html_attributions"; []
+    "next_page_token"; "some token",
+    "results"; [
       {
         "business_status": "OPERATIONAL",
         "geometry": {
@@ -1036,5 +1036,5 @@
         "vicinity": "511 Hayes Street, San Francisco"
       }
     ],
-    "status"= "OK"
+    "status";"OK"
   }

@@ -26,6 +26,7 @@ import { RestaurantScreen } from "./src/features/restaurants/screens/RestaurantS
 
 import { SafeArea } from "./src/components/SafeArea";
 import { RestaurantInfoCard } from "./src/features/restaurants/components/RestaurantInfoCard";
+import { restaurantsRequest } from "./src/services/Restaurant/Restaurant.Service";
 
 const Tab = createBottomTabNavigator();
 
@@ -72,6 +73,7 @@ export default function App() {
 	if (!oswaldLoaded || !latoLoaded) {
 		return null;
 	}
+
 
 	return (
 		<>
