@@ -31,7 +31,7 @@ export const colors = {
   fbColor: "#3b5998",
   twitterColor: "#1DA1F2",
 
-   brand: {
+  brand: {
     primary: "#2182BD",
     secondary: "#5282BD",
     muted: "#C6DAF7",
@@ -91,8 +91,14 @@ export const sizes = ["8px", "16px", "32px", "64px", "128px"];
 
 export const space = ["0px", "4px", "8px", "16px", "32px", "64px"];
 
-
-
-const appTheme = { colors, sizes, fonts,  fontSizes, fontWeights, fonts, lineHeights, space };
+const appTheme = {
+  colors,
+  sizes,
+  fonts,
+  fontSizes,
+  fontWeights,
+  lineHeights,
+  space,
+};
 
 export default appTheme;

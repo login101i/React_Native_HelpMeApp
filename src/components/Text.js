@@ -37,6 +37,7 @@ const variants = {
   caption,
   error,
   hint,
+  body
 };
 
 export const Text = styled.Text`
@@ -47,4 +48,3 @@ export const Text = styled.Text`
 Text.defaultProps = {
   variant: "body",
 };
-

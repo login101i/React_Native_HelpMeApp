@@ -1,55 +1,65 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
+import { Text } from "react-native";
 
 // import { SvgXml } from "react-native-svg";
 
-
 import star from "../../../assets/star";
 // import open from "../../../assets/open"
-import {Spacer} from '../../../components/Spacer'
-import { RestaurantCard,CardCover, CardContent, Title, Description, Rating,Section, SectionEnd } from "./RestaurantInfoCard.Styles";
-
+import { Spacer } from "../../../components/Spacer";
+import {
+	Icon,
+	RestaurantCard,
+	CardCover,
+	CardContent,
+	Title,
+	Description,
+	Rating,
+	Image,
+	Section,
+	SectionEnd
+} from "./RestaurantInfoCard.Styles";
 
 export const RestaurantInfoCard = ({ restaurant = [] }) => {
 	const {
 		name = "Some Restaurant",
-		icon,
+		icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
 		photos = [
-			"https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80",
+			"https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg"
 		],
 		address = "Wrocław ul. Chopina 18",
-		isOpenNow = false,
+		isOpenNow = true,
 		rating = 5,
-		isClosedTemporarily,
-		description = "Super restauracja",
+		isClosedTemporarily = true,
+		description = "Super restauracja"
 	} = restaurant;
 
 	const ratingArray = Array.from(new Array(Math.ceil(rating)));
+	const star =
+		"https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png";
+
 	return (
-		<RestaurantCard>
-			<CardCover source={{ uri: photos[0] }} />
-			<CardContent>
-				<Title>{name}</Title>
-				<Spacer/>
-				<Section>
-					{ratingArray.map(() => {
-						<Rating>
-							{/* <SvgXml xml={star} width={20} height={20} /> */}
-							<Text>Svg Element</Text>
-						</Rating>;
-					})}
-					<SectionEnd>
-						{isClosedTemporarily && (
-							<Text variant="label" style={{ color: "red" }}>
-								Closed temporarily{" "}
-							</Text>
-						)}
-						<Image style={{ width: 20, height: 20 }} source={{ uri: icon }} />
-						{isOpenNow && <SvgXml xml={star} width={20} height={20} />}
-					</SectionEnd>
-				</Section>
-				<Description>{description}</Description>
-			</CardContent>
-		</RestaurantCard>
+			<RestaurantCard>
+				<CardCover key={name} source={{ uri: photos[0] }} />
+				<CardContent>
+					<Text variant="label">{name}</Text>
+
+					<Section>
+						{ratingArray.map(() => (
+							<Icon source={{ uri: star }} />
+						))}
+						<SectionEnd>
+							{isClosedTemporarily && (
+								<Text variant="error">Closed temporarily </Text>
+							)}
+							<Spacer position="left" size="large">
+								<Icon source={{ uri: icon }} />
+							</Spacer>
+							{isOpenNow && <Icon source={{ uri: icon }} />}
+						</SectionEnd>
+					</Section>
+					<Text variant="body">{address}</Text>
+				</CardContent>
+			</RestaurantCard>
 	);
 };
