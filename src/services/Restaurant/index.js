@@ -1,5 +1,5 @@
 
-import san_francisco from "./RestaurantData";
+import {san_francisco} from "./RestaurantData";
 
 export const mocks = {
 	"37.7749295,-122.4194155": san_francisco

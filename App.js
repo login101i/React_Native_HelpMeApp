@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrasctructure/theme";
+import { RestaurantContextProvider } from "./src/services/Restaurant/Restaurant.Context";
 
 import {
 	SafeAreaView,
@@ -74,25 +75,26 @@ export default function App() {
 		return null;
 	}
 
-
 	return (
 		<>
 			<ThemeProvider theme={theme}>
-				<NavigationContainer>
-					<Tab.Navigator
-						screenOptions={createScreenOptions}
-						tabBarOptions={{
-							activeTintColor: "tomato",
-							inactiveTintColor: "gray"
-						}}
-					>
-						<Tab.Screen name="Restaurants" component={RestaurantScreen} />
-						<Tab.Screen name="Map" component={MapScreen} />
-						<Tab.Screen name="Settings" component={SettingsScreen} />
-					</Tab.Navigator>
-				</NavigationContainer>
+				<RestaurantContextProvider>
+					<NavigationContainer>
+						<Tab.Navigator
+							screenOptions={createScreenOptions}
+							tabBarOptions={{
+								activeTintColor: "tomato",
+								inactiveTintColor: "gray"
+							}}
+						>
+							<Tab.Screen name="Restaurants" component={RestaurantScreen} />
+							<Tab.Screen name="Map" component={MapScreen} />
+							<Tab.Screen name="Settings" component={SettingsScreen} />
+						</Tab.Navigator>
+					</NavigationContainer>
 
-				<ExpoStatusBar style="auto" />
+					<ExpoStatusBar style="auto" />
+				</RestaurantContextProvider>
 			</ThemeProvider>
 		</>
 	);
