@@ -17,6 +17,7 @@ export const locationTransform =(resolve)=>{
     const formattedResponse=resolve
     const {geometry={}}=formattedResponse.results[0]
     const {lat, lng}=geometry.location
+    
 
     return {lat, lng}
 

@@ -9,7 +9,6 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
 			reject("not found");
 		}
 		resolve(mock);
-		console.log(mock);
 	});
 };
 

@@ -2,19 +2,17 @@ import React, { useContext, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
 
-import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard";
 import { StyleSheet, Text, SafeAreaView, View, FlatList } from "react-native";
 import { SafeArea } from "../../../components/SafeArea";
 import { RestaurantContext } from "../../../services/Restaurant/Restaurant.Context";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
-import {
-	SearchContainer,
-	RestaurantListContainer
-} from "./RestaurantScreen.Styles";
+
+
 
 import { Spacer } from "../../../components/Spacer";
+import {RestaurantSearch} from '../components/RestaurantSearch'
 
 const IndicatorContainer = styled.View`
 	position: absolute;
@@ -28,8 +26,7 @@ const Indicator = styled(ActivityIndicator)`
 `;
 
 export const RestaurantScreen = () => {
-	const [searchQuery, setSearchQuery] = React.useState("");
-	const onChangeSearch = (query) => setSearchQuery(query);
+	
 
 	const { restaurants, isLoading, error } = useContext(RestaurantContext);
 
@@ -42,13 +39,7 @@ export const RestaurantScreen = () => {
 			) : (
 				<>
 					<Spacer position="top" size="large">
-						<SearchContainer>
-							<Searchbar
-								placeholder="Search"
-								onChangeText={onChangeSearch}
-								value={searchQuery}
-							/>
-						</SearchContainer>
+						<RestaurantSearch/>
 					</Spacer>
 					<FlatList
 						data={restaurants}
