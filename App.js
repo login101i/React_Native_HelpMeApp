@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrasctructure/theme";
 import { RestaurantContextProvider } from "./src/services/Restaurant/Restaurant.Context";
+import { LocationContextProvider } from "./src/services/location/LocationContext";
 
 import {
 	SafeAreaView,
@@ -22,12 +23,9 @@ import {
 	Oswald_400Regular
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-
 import { RestaurantScreen } from "./src/features/restaurants/screens/RestaurantScreen";
-
 import { SafeArea } from "./src/components/SafeArea";
-import { RestaurantInfoCard } from "./src/features/restaurants/components/RestaurantInfoCard";
-import { restaurantsRequest } from "./src/services/Restaurant/Restaurant.Service";
+
 
 const Tab = createBottomTabNavigator();
 
@@ -79,21 +77,23 @@ export default function App() {
 		<>
 			<ThemeProvider theme={theme}>
 				<RestaurantContextProvider>
-					<NavigationContainer>
-						<Tab.Navigator
-							screenOptions={createScreenOptions}
-							tabBarOptions={{
-								activeTintColor: "tomato",
-								inactiveTintColor: "gray"
-							}}
-						>
-							<Tab.Screen name="Restaurants" component={RestaurantScreen} />
-							<Tab.Screen name="Map" component={MapScreen} />
-							<Tab.Screen name="Settings" component={SettingsScreen} />
-						</Tab.Navigator>
-					</NavigationContainer>
+					<LocationContextProvider>
+						<NavigationContainer>
+							<Tab.Navigator
+								screenOptions={createScreenOptions}
+								tabBarOptions={{
+									activeTintColor: "tomato",
+									inactiveTintColor: "gray"
+								}}
+							>
+								<Tab.Screen name="Restaurants" component={RestaurantScreen} />
+								<Tab.Screen name="Map" component={MapScreen} />
+								<Tab.Screen name="Settings" component={SettingsScreen} />
+							</Tab.Navigator>
+						</NavigationContainer>
 
-					<ExpoStatusBar style="auto" />
+						<ExpoStatusBar style="auto" />
+					</LocationContextProvider>
 				</RestaurantContextProvider>
 			</ThemeProvider>
 		</>
