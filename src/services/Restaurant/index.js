@@ -1,8 +1,9 @@
-
-import {san_francisco} from "./RestaurantData";
+import { san_francisco } from "./San_Francisko";
+import { chicago } from "./Chicago";
 
 export const mocks = {
-	"37.7749295,-122.4194155": san_francisco
+	"37.7749295,-122.4194155": san_francisco,
+	"41.878113,-87.629799": chicago
 };
 
 export const mockImages = [
