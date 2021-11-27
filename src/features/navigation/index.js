@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { NavigationContainer } from "@react-navigation/native";
 
-import { AppNavigator } from './AppNavigator'
-import { authenticationContext } from './../../services/authentication/authenticationContext'
+import { AccountNavigator } from './AccountNavigator'
+import {AppNavigator} from './AppNavigator'
+import { AuthenticationContext } from './../../services/authentication/AuthenticationContext'
 
 
 export const Navigation = () => {
-    const { user, isLoading, error } = useContext(authenticationContext)
+    const { user, isLoading, error } = useContext(AuthenticationContext)
 
     return (
         <NavigationContainer>

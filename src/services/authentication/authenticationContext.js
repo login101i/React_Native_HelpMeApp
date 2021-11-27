@@ -1,19 +1,19 @@
-import React, { useState, useEffect, createContext } from 'react'
-import { login } from './authenticationService'
+import React, { useState, createContext } from 'react'
+import { login } from './AuthenticationService'
 
-export const authenticationContext = createContext()
+export const AuthenticationContext = createContext()
 
 
-export const authenticationContextProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticaded] = uUeState(null)
+export const AuthenticationContextProvider = ({ children }) => {
+    const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const loginUser = (email, user) => {
+    const loginUser = (email, password) => {
         setIsLoading(true)
-        login(email, user)
+        login(email, password)
             .then((u) => {
-                setIsAuthenticaded(u)
+                setUser(u)
                 setIsLoading(false)
             })
             .catch((e) => {
@@ -25,15 +25,15 @@ export const authenticationContextProvider = ({ children }) => {
 
 
     return (
-        <authenticationContext value={{
-            isAuthenticated,
-            isLogin,
-            error,
-            loginUser
-        }}>
+        <AuthenticationContext.Provider
+            value={{
+                user,
+                isLoading,
+                error,
+                loginUser
+            }}>
             {children}
-        </authenticationContext>
+        </AuthenticationContext.Provider>
     )
 }
 
-export default authenticationContext

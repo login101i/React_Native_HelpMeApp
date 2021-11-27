@@ -45,26 +45,26 @@ export const RestaurantScreen = ({ navigation }) => {
 							onFavouritesToggle={() => setShowFavourites(!showFavourites)}
 						/>
 					</Spacer>
-				
-						{showFavourites && <FavouritesBar favourites={favourites} onNavigate={navigation.navigate} />}
-						<FlatList
-							data={restaurants}
-							renderItem={({ item }) => {
-								return (
-									<TouchableOpacity
-										onPress={() =>
-											navigation.navigate("RestaurantDetails", {
-												restaurant: item
-											})
-										}
-									>
-										<RestaurantInfoCard restaurant={item} />;
-									</TouchableOpacity>
-								);
-							}}
-							keyExtractor={(item) => item.name}
-							contentContainerStyle={{ padding: 16 }}
-						/>
+
+					{showFavourites && <FavouritesBar favourites={favourites} onNavigate={navigation.navigate} />}
+					<FlatList
+						data={restaurants}
+						renderItem={({ item }) => {
+							return (
+								<TouchableOpacity
+									onPress={() =>
+										navigation.navigate("RestaurantDetails", {
+											restaurant: item
+										})
+									}
+								>
+									<RestaurantInfoCard restaurant={item} />;
+								</TouchableOpacity>
+							);
+						}}
+						keyExtractor={(item) => item.name}
+						contentContainerStyle={{ padding: 16 }}
+					/>
 				</>
 			)}
 		</SafeArea>

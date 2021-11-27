@@ -1,6 +1,6 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import * as firebase from 'firebase'
+// import * as firebase from 'firebase'
 
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrasctructure/theme";
@@ -8,8 +8,8 @@ import { RestaurantContextProvider } from "./src/services/Restaurant/Restaurant.
 import { LocationContextProvider } from "./src/services/location/LocationContext";
 import { AppNavigator } from "./src/features/navigation/AppNavigator";
 import { FavouritesContextProvider } from "./src/services/favourites/FavouritesContext";
-import { authenticationContextProvider } from "./src/services/authentication/authenticationContext";
-import {Navigation} from './src/features/navigation'
+import { AuthenticationContextProvider } from "./src/services/authentication/AuthenticationContext";
+import { Navigation } from './src/features/navigation'
 
 
 import {
@@ -19,22 +19,22 @@ import {
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
 export default function App() {
-	const [isAuthenticaded, setIsAuthenticaded] = useState(false)
+	const [isAuthenticaded, setIsAuthenticaded] = useState(true)
 
 
-	useEffect(() => {
-		setTimeout(() => {
-			firebase.auth()
-				.signInWithEmailAndPassword("mk@wp.pl, 123456")
-				.then((user) => {
-					setIsAuthenticaded(true)
-				})
-				.catch((e) => {
-					console.log(e)
-				})
-		}, 4000)
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		firebase.auth()
+	// 			.signInWithEmailAndPassword("mk@wp.pl, 123456")
+	// 			.then((user) => {
+	// 				setIsAuthenticaded(true)
+	// 			})
+	// 			.catch((e) => {
+	// 				console.log(e)
+	// 			})
+	// 	}, 4000)
 
-	}, [])
+	// }, [])
 
 	let initializeApp
 
@@ -47,9 +47,9 @@ export default function App() {
 		appId: "1:974486216033:web:e2050af62e5f63d7173920"
 	};
 
-	if (!firebase.apps.length) {
-		firebase.initializeApp(firebaseConfig);
-	}
+	// if (!firebase.apps.length) {
+	// 	firebase.initializeApp(firebaseConfig);
+	// }
 
 	const [oswaldLoaded] = useOswald({
 		Oswald_400Regular
@@ -69,7 +69,7 @@ export default function App() {
 	return (
 		<>
 			<ThemeProvider theme={theme}>
-				<authenticationContextProvider>
+				<AuthenticationContextProvider>
 					<FavouritesContextProvider>
 						<LocationContextProvider>
 							<RestaurantContextProvider>
@@ -77,7 +77,7 @@ export default function App() {
 							</RestaurantContextProvider>
 						</LocationContextProvider>
 					</FavouritesContextProvider>
-				</authenticationContextProvider>
+				</AuthenticationContextProvider>
 			</ThemeProvider>
 			<ExpoStatusBar style="auto" />
 		</>

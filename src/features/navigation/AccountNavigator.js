@@ -3,32 +3,27 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator()
 
+import { AccountScreen } from "../account/screens/AccountScreen";
+import { RegisterScreen } from "../account/screens/RegisterScreen";
+import { LoginScreen } from "../account/screens/LoginScreen";
 
-export const AppNavigator = () => (
+
+export const AccountNavigator = () => (
 
 
     <Stack.Navigator headerMode="none">
         <Stack.Screen
             name="Main"
-            component={() => (
-                <View>
-                    <Text>
-                        Account Screen
-                    </Text>
-                </View>
-            )}
+            component={AccountScreen}
         />
         <Stack.Screen
             name="Login"
-            component={() => (
-                <View>
-                    <Text>
-                        Login Screen
-                    </Text>
-                </View>
-            )}
+            component={LoginScreen}
         />
-
+        <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+        />
     </Stack.Navigator>
 )
 
