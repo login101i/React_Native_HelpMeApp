@@ -1,6 +1,6 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-// import * as firebase from 'firebase'
+import * as firebase from 'firebase'
 
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrasctructure/theme";
@@ -9,6 +9,8 @@ import { LocationContextProvider } from "./src/services/location/LocationContext
 import { AppNavigator } from "./src/features/navigation/AppNavigator";
 import { FavouritesContextProvider } from "./src/services/favourites/FavouritesContext";
 import { authenticationContextProvider } from "./src/services/authentication/authenticationContext";
+import {Navigation} from './src/features/navigation'
+
 
 import {
 	useFonts as useOswald,
@@ -71,7 +73,7 @@ export default function App() {
 					<FavouritesContextProvider>
 						<LocationContextProvider>
 							<RestaurantContextProvider>
-								<AppNavigator />
+								<Navigation />
 							</RestaurantContextProvider>
 						</LocationContextProvider>
 					</FavouritesContextProvider>

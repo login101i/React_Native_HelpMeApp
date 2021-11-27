@@ -5,7 +5,7 @@ export const authenticationContext = createContext()
 
 
 export const authenticationContextProvider = ({ children }) => {
-    const [user, setUser] = uUeState(null)
+    const [isAuthenticated, setIsAuthenticaded] = uUeState(null)
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -13,7 +13,7 @@ export const authenticationContextProvider = ({ children }) => {
         setIsLoading(true)
         login(email, user)
             .then((u) => {
-                setUser(u)
+                setIsAuthenticaded(u)
                 setIsLoading(false)
             })
             .catch((e) => {
@@ -26,7 +26,7 @@ export const authenticationContextProvider = ({ children }) => {
 
     return (
         <authenticationContext value={{
-            user,
+            isAuthenticated,
             isLogin,
             error,
             loginUser
