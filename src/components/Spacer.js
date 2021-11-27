@@ -14,7 +14,8 @@ const TopMedium = styled.View`
 const sizes = {
 	small: 1,
 	large: 2,
-	medium: 3
+	medium: 3,
+	big:5
 };
 
 const positionVariant = {

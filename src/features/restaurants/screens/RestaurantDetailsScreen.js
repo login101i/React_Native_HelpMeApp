@@ -5,12 +5,11 @@ import { ScrollView } from "react-native";
 
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard";
 import { SafeArea } from "../../../components/SafeArea";
+import Favourite from '../../../components/Favourite'
 
 export const RestaurantDetailsScreen = ({ route }) => {
 	const { restaurant } = route.params;
-
 	const [expanded, setExpanded] = useState(false);
-
 	const handlePress = () => setExpanded(!expanded);
 
 	return (
@@ -24,7 +23,6 @@ export const RestaurantDetailsScreen = ({ route }) => {
 					<List.Item title="First item" />
 					<List.Item title="Second item" />
 				</List.Accordion>
-
 				<List.Accordion
 					title="Dinners"
 					left={(props) => (
@@ -54,6 +52,4 @@ export const RestaurantDetailsScreen = ({ route }) => {
 			</ScrollView>
 		</SafeArea>
 	);
-};
-
-export default RestaurantDetailsScreen;
+}

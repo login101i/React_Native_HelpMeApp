@@ -15,6 +15,8 @@ import {
 	SectionEnd
 } from "./RestaurantInfoCard.Styles";
 
+import { Favourite } from '../../../components/Favourite'
+
 export const RestaurantInfoCard = ({ restaurant = [] }) => {
 	const {
 		name = "Some Restaurant",
@@ -36,13 +38,14 @@ export const RestaurantInfoCard = ({ restaurant = [] }) => {
 
 	return (
 		<RestaurantCard>
+			<Favourite restaurant={restaurant} />
 			<CardCover key={name} source={{ uri: photos[0] }} />
 			<CardContent>
 				<Text variant="label">{name}</Text>
 
 				<Section>
 					{ratingArray.map((_, i) => (
-						<Icon source={{ uri: star }}  />
+						<Icon source={{ uri: star }} />
 					))}
 					<SectionEnd>
 						{isClosedTemporarily && (
