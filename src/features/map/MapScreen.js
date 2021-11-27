@@ -12,7 +12,7 @@ height:100%;
 width:100%;
 `
 
-export function MapScreen() {
+export function MapScreen({navigation}) {
 
 	const [latDelta, setLatDelta] = useState(0);
 
@@ -54,7 +54,7 @@ export function MapScreen() {
 						}}
 						title={restaurant.name}
 					>
-						<MapCallout restaurant={restaurant} />
+						<MapCallout restaurant={restaurant} onPress={()=>navigation.navigate("RestaurantDetails", {restaurant})}/>
 					</MapView.Marker>
 				})}
 

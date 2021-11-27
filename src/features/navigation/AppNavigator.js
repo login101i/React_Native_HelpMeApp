@@ -27,14 +27,14 @@ const createScreenOptions = ({ route }) => {
 	};
 };
 
-// function SettingsScreen() {
-// 	return (
-// 		<SafeArea>
-// 			<SearchComponent />
-// 			<Text>Hello from SettingsScreen</Text>;
-// 		</SafeArea>
-// 	);
-// }
+function SettingsScreen() {
+	return (
+		<SafeArea>
+			<SearchComponent />
+			<Text>Hello from SettingsScreen</Text>;
+		</SafeArea>
+	);
+}
 
 export const AppNavigator = () => {
 	return (
@@ -47,8 +47,8 @@ export const AppNavigator = () => {
 				}}
 			>
 				<Tab.Screen name="Restaurants" component={RestaurantNavigation} />
-				{/* <Tab.Screen name="Map" component={MapScreen} />
-				<Tab.Screen name="Settings" component={SettingsScreen} /> */}
+				<Tab.Screen name="Map" component={MapScreen} />
+				<Tab.Screen name="Settings" component={SettingsScreen} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
