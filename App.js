@@ -8,6 +8,7 @@ import { RestaurantContextProvider } from "./src/services/Restaurant/Restaurant.
 import { LocationContextProvider } from "./src/services/location/LocationContext";
 import { AppNavigator } from "./src/features/navigation/AppNavigator";
 import { FavouritesContextProvider } from "./src/services/favourites/FavouritesContext";
+import { authenticationContextProvider } from "./src/services/authentication/authenticationContext";
 
 import {
 	useFonts as useOswald,
@@ -46,7 +47,7 @@ export default function App() {
 
 	if (!firebase.apps.length) {
 		firebase.initializeApp(firebaseConfig);
-	  }
+	}
 
 	const [oswaldLoaded] = useOswald({
 		Oswald_400Regular
@@ -66,13 +67,15 @@ export default function App() {
 	return (
 		<>
 			<ThemeProvider theme={theme}>
-				<FavouritesContextProvider>
-					<LocationContextProvider>
-						<RestaurantContextProvider>
-							<AppNavigator />
-						</RestaurantContextProvider>
-					</LocationContextProvider>
-				</FavouritesContextProvider>
+				<authenticationContextProvider>
+					<FavouritesContextProvider>
+						<LocationContextProvider>
+							<RestaurantContextProvider>
+								<AppNavigator />
+							</RestaurantContextProvider>
+						</LocationContextProvider>
+					</FavouritesContextProvider>
+				</authenticationContextProvider>
 			</ThemeProvider>
 			<ExpoStatusBar style="auto" />
 		</>
