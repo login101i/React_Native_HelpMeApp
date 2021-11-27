@@ -1,13 +1,31 @@
 import React from 'react'
 
-import { AccountBackground } from '../component/Account.Styles'
+import { AccountBackground, AccountTranspBackground } from '../component/Account.Styles'
+import { AuthButton, AccountContainer } from '../component/Account.Styles'
+import { Spacer } from '../../../components/Spacer'
 
-const image=""
-
-export const AccountScreen = () => {
+export const AccountScreen = ({navigation}) => {
     return (
-        <AccountBackground source={image}>
-            
+        <AccountBackground >
+            <AccountTranspBackground />
+
+            <AccountContainer>
+
+                <AuthButton
+                    icon="lock-open"
+                    onPress={()=>navigation.navigate("Login")}
+                    mode="contained"
+                >Login </AuthButton>
+                <Spacer
+                    position="top" size="medium"
+                />
+                <AuthButton
+                    icon="fountain-pen-tip"
+                    onPress={()=>navigation.navigate("Tegister")}
+                    mode="contained"
+                >Register </AuthButton>
+            </AccountContainer>
+
         </AccountBackground>
     )
 }
