@@ -2,11 +2,13 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { Text } from "react-native";
+import { Settings, Text } from "react-native";
 
-import { RestaurantScreen } from "../../../src/features/restaurants/screens/RestaurantScreen";
 import { SafeArea } from "../../../src/components/SafeArea";
 import { RestaurantNavigation } from "./RestaurantNavigation";
+
+import { MapScreen } from "../../features/map/MapScreen";
+import { SearchComponent } from "../map/SearchComponent";
 
 const Tab = createBottomTabNavigator();
 
@@ -25,21 +27,14 @@ const createScreenOptions = ({ route }) => {
 	};
 };
 
-function MapScreen() {
-	return (
-		<SafeArea>
-			<Text>Hello from MapScreen</Text>;
-		</SafeArea>
-	);
-}
-
-function SettingsScreen() {
-	return (
-		<SafeArea>
-			<Text>Hello from SettingsScreen</Text>;
-		</SafeArea>
-	);
-}
+// function SettingsScreen() {
+// 	return (
+// 		<SafeArea>
+// 			<SearchComponent />
+// 			<Text>Hello from SettingsScreen</Text>;
+// 		</SafeArea>
+// 	);
+// }
 
 export const AppNavigator = () => {
 	return (
@@ -52,8 +47,8 @@ export const AppNavigator = () => {
 				}}
 			>
 				<Tab.Screen name="Restaurants" component={RestaurantNavigation} />
-				<Tab.Screen name="Map" component={MapScreen} />
-				<Tab.Screen name="Settings" component={SettingsScreen} />
+				{/* <Tab.Screen name="Map" component={MapScreen} />
+				<Tab.Screen name="Settings" component={SettingsScreen} /> */}
 			</Tab.Navigator>
 		</NavigationContainer>
 	);

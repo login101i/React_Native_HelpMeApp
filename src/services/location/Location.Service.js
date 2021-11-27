@@ -19,7 +19,7 @@ export const locationTransform =(resolve)=>{
     const {lat, lng}=geometry.location
     
 
-    return {lat, lng}
+    return {lat, lng, viewport:geometry.viewport}
 
 
 }

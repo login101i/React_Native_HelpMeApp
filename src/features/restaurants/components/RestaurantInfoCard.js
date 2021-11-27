@@ -42,7 +42,7 @@ export const RestaurantInfoCard = ({ restaurant = [] }) => {
 
 				<Section>
 					{ratingArray.map((_, i) => (
-						<Icon source={{ uri: star }} key={`${place_id}+ ${i}`} />
+						<Icon source={{ uri: star }}  />
 					))}
 					<SectionEnd>
 						{isClosedTemporarily && (
