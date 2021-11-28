@@ -11,7 +11,7 @@ import { Text } from '../../../components/Text'
 export const LoginScreen = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
-    const { loginUser, error } = useContext(AuthenticationContext)
+    const { loginUser, error, isLoading } = useContext(AuthenticationContext)
 
     return (
         <AccountBackground >

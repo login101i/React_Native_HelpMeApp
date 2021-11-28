@@ -1,20 +1,35 @@
 import React from 'react'
+import LottieView from 'lottie-react-native'
+import { Text } from 'react-native'
 
-import { AccountBackground, AccountTranspBackground } from '../component/Account.Styles'
+import { AccountBackground, AccountTranspBackground, AnimationContainer } from '../component/Account.Styles'
 import { AuthButton, AccountContainer } from '../component/Account.Styles'
 import { Spacer } from '../../../components/Spacer'
 
 
-export const AccountScreen = ({navigation}) => {
+export const AccountScreen = ({ navigation }) => {
+
+
     return (
         <AccountBackground >
-            <AccountTranspBackground />
-
             <AccountContainer>
+                {/* <AnimationContainer>
+                <LottieView
+                    source={require('../../../assets/animation/lottieAnimation.json')}
+                    key="animation"
+                    autoPlay
+                    loop
+                    resizeMode="cover" />;
+     
+            </AnimationContainer> */}
+                {/* cq it doesn't work  */}
 
+                <AccountTranspBackground />
+
+                <Text>Hello</Text>
                 <AuthButton
                     icon="lock-open"
-                    onPress={()=>navigation.navigate("Login")}
+                    onPress={() => navigation.navigate("Login")}
                     mode="contained"
                 >Login </AuthButton>
                 <Spacer
@@ -22,12 +37,11 @@ export const AccountScreen = ({navigation}) => {
                 />
                 <AuthButton
                     icon="fountain-pen-tip"
-                    onPress={()=>navigation.navigate("Register")}
+                    onPress={() => navigation.navigate("Register")}
                     mode="contained"
                 >Register </AuthButton>
             </AccountContainer>
-
-        </AccountBackground>
+        </AccountBackground >
     )
 }
 
