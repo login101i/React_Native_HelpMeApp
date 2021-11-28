@@ -18,17 +18,13 @@ z-index:9;
 export const Favourite = ({ restaurant }) => {
     const { addToFavourites, removeFromFavourites, favourites } = useContext(FavouritesContext)
 
-
-
     const isFavourite = favourites.find((res) => res.place_id === restaurant.place_id)
-
     return (
         <FavouriteButton
             onPress={() =>
                 !isFavourite ? addToFavourites(restaurant) : removeFromFavourites(restaurant)
             }
         >
-
             <AntDesign
                 name={isFavourite ? "heart" : "hearto"}
                 size={24}

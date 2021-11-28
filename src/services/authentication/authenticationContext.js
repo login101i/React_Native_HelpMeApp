@@ -1,4 +1,7 @@
 import React, { useState, createContext } from 'react'
+// import * as firebase from 'firebase'
+
+
 import { login, register } from './AuthenticationService'
 
 export const AuthenticationContext = createContext()
@@ -40,7 +43,12 @@ export const AuthenticationContextProvider = ({ children }) => {
                 setError(e)
             })
     }
-    
+
+    const logoutUser = () => {
+        setUser(null)
+        // firebase.auth().signOut()
+    }
+
     return (
         <AuthenticationContext.Provider
             value={{
@@ -48,7 +56,8 @@ export const AuthenticationContextProvider = ({ children }) => {
                 isLoading,
                 error,
                 loginUser,
-                registerUser
+                registerUser,
+                logoutUser
             }}>
             {children}
         </AuthenticationContext.Provider>

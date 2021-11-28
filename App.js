@@ -4,10 +4,11 @@ import React, { useState, useEffect } from "react";
 
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrasctructure/theme";
-import { RestaurantContextProvider } from "./src/services/Restaurant/Restaurant.Context";
-import { LocationContextProvider } from "./src/services/location/LocationContext";
-import { FavouritesContextProvider } from "./src/services/favourites/FavouritesContext";
+
+
 import { AuthenticationContextProvider } from "./src/services/authentication/AuthenticationContext";
+
+
 import { Navigation } from './src/features/navigation'
 
 
@@ -61,21 +62,13 @@ export default function App() {
 	if (!oswaldLoaded || !latoLoaded) {
 		return null;
 	}
-
 	if (!isAuthenticaded) return null
-
 
 	return (
 		<>
 			<ThemeProvider theme={theme}>
 				<AuthenticationContextProvider>
-					<FavouritesContextProvider>
-						<LocationContextProvider>
-							<RestaurantContextProvider>
-								<Navigation />
-							</RestaurantContextProvider>
-						</LocationContextProvider>
-					</FavouritesContextProvider>
+					<Navigation />
 				</AuthenticationContextProvider>
 			</ThemeProvider>
 			<ExpoStatusBar style="auto" />
