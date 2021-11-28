@@ -4,6 +4,7 @@ import { AccountBackground, AccountTranspBackground } from '../component/Account
 import { AuthButton, AccountContainer } from '../component/Account.Styles'
 import { Spacer } from '../../../components/Spacer'
 
+
 export const AccountScreen = ({navigation}) => {
     return (
         <AccountBackground >
@@ -21,7 +22,7 @@ export const AccountScreen = ({navigation}) => {
                 />
                 <AuthButton
                     icon="fountain-pen-tip"
-                    onPress={()=>navigation.navigate("Tegister")}
+                    onPress={()=>navigation.navigate("Register")}
                     mode="contained"
                 >Register </AuthButton>
             </AccountContainer>

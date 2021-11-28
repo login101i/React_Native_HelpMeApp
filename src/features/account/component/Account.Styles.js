@@ -1,12 +1,12 @@
 import styled from "styled-components/native";
-import { Button } from 'react-native-paper'
+import { Button, TextInput } from 'react-native-paper'
 
 import { colors } from '../../../infrasctructure/theme/theme'
 console.log(colors)
 
 
 export const AccountBackground = styled.ImageBackground.attrs({
-    source: "https://cdn.pixabay.com/photo/2017/09/22/17/35/cairn-2776470_960_720.jpg"
+  source: "https://cdn.pixabay.com/photo/2017/09/22/17/35/cairn-2776470_960_720.jpg"
 })`
 flex: 1;
 align-items: center;
@@ -30,8 +30,13 @@ export const AccountContainer = styled.View`
 
 
 export const AuthButton = styled(Button).attrs({
-    color: colors.green
+  color: colors.green
 })`
 padding:${(props) => props.theme.space[1]}
+
+`
+
+export const AuthInput = styled(TextInput)`
+width:320px;
 
 `

@@ -5,3 +5,12 @@ export const login =(email, password)=>{
 }
 
 
+export const register =(email, password)=>{
+   
+    firebase.auth().createUserWithEmailAndPassword( email, password)
+}
+
+
+
+
+

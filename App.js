@@ -6,7 +6,6 @@ import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrasctructure/theme";
 import { RestaurantContextProvider } from "./src/services/Restaurant/Restaurant.Context";
 import { LocationContextProvider } from "./src/services/location/LocationContext";
-import { AppNavigator } from "./src/features/navigation/AppNavigator";
 import { FavouritesContextProvider } from "./src/services/favourites/FavouritesContext";
 import { AuthenticationContextProvider } from "./src/services/authentication/AuthenticationContext";
 import { Navigation } from './src/features/navigation'
