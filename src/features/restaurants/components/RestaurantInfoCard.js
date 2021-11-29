@@ -60,5 +60,5 @@ export const RestaurantInfoCard = ({ restaurant = [] }) => {
 				<Text variant="body">{address}</Text>
 			</CardContent>
 		</RestaurantCard>
-	);
+	)
 };

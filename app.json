@@ -4,7 +4,7 @@
 		"slug": "React_Native_Restaurant",
 		"version": "0.0.1",
 		"orientation": "portrait",
-		"icon": "./src//assets/icon.png",
+		"icon": "./src/assets/images/ethereum.png",
 		"splash": {
 			"image": "./src/assets/splash.png",
 			"resizeMode": "contain",
@@ -19,12 +19,12 @@
 		},
 		"android": {
 			"adaptiveIcon": {
-				"foregroundImage": "./src/assets/adaptive-icon.png",
+				"foregroundImage": "./src/assets/splash.png",
 				"backgroundColor": "#dbdbdb"
 			}
 		},
 		"web": {
-			"favicon": "./src/assets/favicon.png"
+			"favicon": "./src/assets/images/ethereum.png"
 		}
 	}
 }

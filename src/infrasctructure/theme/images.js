@@ -1,11 +1,9 @@
-const banner = require("../../assets/images/banner.png");
-const bitcoin = require("../../assets/images/bitcoin.png");
+const ripple = require("../../assets/images/ripple.png");
 const ethereum = require("../../assets/images/ethereum.png");
-const litecoin = require("../../assets/images/litecoin.png");
+const mountains = require("../../assets/images/mountains.jpg");
 
 export default {
-  banner,
-  bitcoin,
+  ripple,
   ethereum,
-  litecoin,
+  mountains,
 };

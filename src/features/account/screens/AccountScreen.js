@@ -26,7 +26,6 @@ export const AccountScreen = ({ navigation }) => {
 
                 <AccountTranspBackground />
 
-                <Text>Hello</Text>
                 <AuthButton
                     icon="lock-open"
                     onPress={() => navigation.navigate("Login")}

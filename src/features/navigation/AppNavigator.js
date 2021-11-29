@@ -7,12 +7,10 @@ import { SafeArea } from "../../../src/components/SafeArea";
 import { RestaurantNavigation } from "./RestaurantNavigation";
 
 import { MapScreen } from "../../features/map/MapScreen";
-import { SearchComponent } from "../map/SearchComponent";
-import { AuthenticationContext } from '../../services/authentication/AuthenticationContext'
 import { LocationContextProvider } from "../../services/location/LocationContext";
 import { FavouritesContextProvider } from "../../services/favourites/FavouritesContext";
 import { RestaurantContextProvider } from "../../services/Restaurant/RestaurantContext";
-
+import { SettingsNavigator } from '../../features/navigation/SettingsNavigator'
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
@@ -28,21 +26,8 @@ const createScreenOptions = ({ route }) => {
 			<Ionicons name={iconName} size={size} color={color} />
 		)
 	};
-};
-
-function SettingsScreen({ navigation }) {
-	const { logoutUser } = useContext(AuthenticationContext)
-	return (
-		<SafeArea>
-			<SearchComponent />
-			<Button title="Logout"
-				onPress={() => {
-					logoutUser()
-					navigation.navigate()
-				}} />;
-		</SafeArea>
-	);
 }
+
 
 export const AppNavigator = () => {
 	return (
@@ -56,11 +41,13 @@ export const AppNavigator = () => {
 						tabBarOptions={{
 							activeTintColor: "tomato",
 							inactiveTintColor: "gray"
-						}}
-					>
+						}}	>
+
 						<Tab.Screen name="Restaurants" component={RestaurantNavigation} />
+						<Tab.Screen name="Settings" component={SettingsNavigator} />
 						<Tab.Screen name="Map" component={MapScreen} />
-						<Tab.Screen name="Settings" component={SettingsScreen} />
+
+
 					</Tab.Navigator>
 
 				</RestaurantContextProvider >

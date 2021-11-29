@@ -12,7 +12,7 @@ import { Spacer } from "../../../components/Spacer";
 import { RestaurantSearch } from "../components/RestaurantSearch";
 import { FavouritesBar } from "../../../components/FavouritesBar"
 import { FavouritesContext } from "../../../services/favourites/FavouritesContext";
-import { ScrollView } from "react-native-gesture-handler";
+import { AnimatedView } from '../../../components/AnimatedView'
 
 const IndicatorContainer = styled.View`
 	position: absolute;
@@ -58,9 +58,12 @@ export const RestaurantScreen = ({ navigation }) => {
 										})
 									}
 								>
-									<RestaurantInfoCard restaurant={item} />;
+									<AnimatedView>
+										<RestaurantInfoCard restaurant={item} />
+									</AnimatedView>
+
 								</TouchableOpacity>
-							);
+							)
 						}}
 						keyExtractor={(item) => item.name}
 						contentContainerStyle={{ padding: 16 }}
