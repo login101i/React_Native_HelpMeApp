@@ -11,7 +11,7 @@ export const Navigation = () => {
 
     return (
         <NavigationContainer>
-            {!user ? <AppNavigator /> : <AccountNavigator />}
+             {!user ? <AppNavigator /> : <AccountNavigator />}
         </NavigationContainer>
 
     )

@@ -20,7 +20,7 @@ padding:10px;
 
 
 export const SettingsScreen = ({ navigation }) => {
-    const [picture, setPicture] = useState(null)
+const [picture, setPjicture] = useState(null)
     const { logoutUser, user } = useContext(AuthenticationContext)
 
 

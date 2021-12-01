@@ -15,7 +15,6 @@ export const RestaurantContextProvider = ({ children }) => {
 		setIsLoading(true);
 		setRestaurants([]);
 
-		setTimeout(() => {
 			restaurantsRequest(loc)
 				.then(restaurantsTransform)
 				.then((results) => {
@@ -26,7 +25,7 @@ export const RestaurantContextProvider = ({ children }) => {
 					setIsLoading(false);
 					setError(err);
 				});
-		}, 2000);
+	
 	};
 	useEffect(() => {
 		if (location) {

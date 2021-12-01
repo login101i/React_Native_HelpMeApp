@@ -1,12 +1,13 @@
-import { san_francisco } from "./San_Francisko";
-import { chicago } from "./Chicago";
+const san_francisco =require('./San_Francisko')
+const   chicago =require("./chicago")
 
-export const mocks = {
+
+module.exports.mocks = {
 	"37.7749295,-122.4194155": san_francisco,
 	"41.878113,-87.629799": chicago
 };
 
-export const mockImages = [
+module.exports.mockImages = [
 	"https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
 	"https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-oranges-ice-600x750.jpg",
 	"https://www.foodiesfeed.com/wp-content/uploads/2020/08/detail-of-pavlova-strawberry-piece-of-cake-600x800.jpg",
@@ -15,3 +16,11 @@ export const mockImages = [
 	"https://www.foodiesfeed.com/wp-content/uploads/2019/02/messy-pizza-on-a-black-table-600x400.jpg",
 	"https://www.foodiesfeed.com/wp-content/uploads/2019/02/pizza-ready-for-baking-600x400.jpg"
 ];
+
+
+module.exports.addMockImage=(restaurant)=>{
+const randomImage =
+    mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
+  restaurant.photos = [randomImage];
+  return restaurant;
+}

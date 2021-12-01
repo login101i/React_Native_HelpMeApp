@@ -2,16 +2,15 @@
 
 
 import {locations} from "./Location.Mock"
+import {host,isMock} from './../../utils/env'
 
-export const locationRequest=(searchTerm)=>{
-    return new Promise ((resolve, rejection)=>{
-        const location=locations[searchTerm]
-        if(!location){
-            rejection("not found")
-        }
-        resolve(location)
-    })
-}
+export const locationRequest = (searchTerm) => {
+  return fetch(`${host}/geocode?city=${searchTerm}&mock=${isMock}`).then(
+    (res) => {
+      return res.json();
+    }
+  );
+};
 
 export const locationTransform =(resolve)=>{
     const formattedResponse=resolve

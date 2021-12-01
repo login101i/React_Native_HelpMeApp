@@ -1,4 +1,4 @@
-export const san_francisco = {
+module.exports = {
 	results: [
 		{
 			business_status: "OPERATIONAL",

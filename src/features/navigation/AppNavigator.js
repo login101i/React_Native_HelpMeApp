@@ -44,6 +44,7 @@ export const AppNavigator = () => {
 						}}	>
 
 						<Tab.Screen name="Restaurants" component={RestaurantNavigation} />
+						<Tab.Screen name="Checkout" component={CheckoutNavigator} />
 						<Tab.Screen name="Settings" component={SettingsNavigator} />
 						<Tab.Screen name="Map" component={MapScreen} />
 
