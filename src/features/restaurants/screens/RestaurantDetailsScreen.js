@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { List } from "react-native-paper";
 import { ScrollView } from "react-native";
 
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard";
 import { SafeArea } from "../../../components/SafeArea";
-import Favourite from '../../../components/Favourite'
+import {OrderButton} from "../../../features/restaurants/screens/RestaurantScreen.Styles"
+import { Spacer } from "../../../components/Spacer";
+import { CartContext } from "../../../services/cart/cartContext";
+import { NavigationContainer } from "@react-navigation/native";
 
 export const RestaurantDetailsScreen = ({ route }) => {
 	const { restaurant } = route.params;
 	const [expanded, setExpanded] = useState(false);
 	const handlePress = () => setExpanded(!expanded);
+
+	const {addToCart} =useContext(CartContext)
 
 	return (
 		<SafeArea>
@@ -49,6 +54,15 @@ export const RestaurantDetailsScreen = ({ route }) => {
 					<List.Item title="First item" />
 					<List.Item title="Second item" />
 				</List.Accordion>
+
+				<Spacer position="bottom" size="large">
+					<OrderButton mode="contained" icon="cash-usd" onPress={()=>{
+						addToCart({item:"special", price:1234, restaurant})
+						navigation.navigate("Checkout")
+					}}>
+						Order special only 
+					</OrderButton>
+				</Spacer>
 			</ScrollView>
 		</SafeArea>
 	);

@@ -1,11 +1,11 @@
 import React, { useState, useEffect, createContext } from "react";
-export const CardContext = createContext();
+
+export const CartContext = createContext();
 
 import { AuthenticationContext } from "../authentication/AuthenticationContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { cardTokenRequest } from "../checkout/CheckoutServise";
 
-export const CardContextProvider = ({ children }) => {
+export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [restaurant, setRestaurant] = useState(null);
 
@@ -25,11 +25,12 @@ export const CardContextProvider = ({ children }) => {
     setRestaurant(null);
   };
 
-  return <CardContext.Provider value={{
+  return <CartContext.Provider
+   value={{
     cart,
     restaurant,
     addToCart:add,
     clearCart:clear
 
-  }}>{children}</CardContext.Provider>;
+  }}>{children}</CartContext.Provider>;
 };
