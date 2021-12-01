@@ -8,6 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [restaurant, setRestaurant] = useState(null);
+  const [sum, setSum] = useState(0)
 
   const { user } = useContext(AuthenticationContext);
 
@@ -25,12 +26,33 @@ export const CartContextProvider = ({ children }) => {
     setRestaurant(null);
   };
 
+  
+  const calculateSum = (cartItems) => {
+    // let sum = 0;
+    // for (i = 0; i >= cart.length; i++) {
+    //   sum += cartItems.cart.price[i];
+    // return sum
+    const newSum =cartItems.reduce((acc, {price})=>{
+      return (acc+=price)
+    },0)
+    setSum(newSum);
+  };
+
+  useEffect(() => {
+    if (!cart.length) {
+      setSum(0);
+      return;
+    }
+    calculateSum(cart);
+  }, [cart]);
+
   return <CartContext.Provider
    value={{
     cart,
     restaurant,
     addToCart:add,
-    clearCart:clear
+    clearCart:clear,
+    sum
 
   }}>{children}</CartContext.Provider>;
 };
