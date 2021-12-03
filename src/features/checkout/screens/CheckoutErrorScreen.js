@@ -1,14 +1,17 @@
-import React from 'react'
+import React from "react";
 
+import { Text, SafeArea} from "../../../components/Text";
+import { CartIconContainer, CartIcon } from "../components/CheckoutStyles";
 
-import { Spacer } from "../../../components/spacer/spacer.component";
-
-const CheckoutErrorScreen = () => {
+export const CheckoutErrorScreen = ({ route }) => {
+    const { error = "" } = route.params;
     return (
-        <div>
-            
-          </div>
-    )
-}
-
-export default CheckoutErrorScreen
+      <SafeArea>
+        <CartIconContainer>
+          <CartIcon icon="close" bg={colors.ui.error} />
+          <Text variant="label">{error}</Text>
+        </CartIconContainer>
+      </SafeArea>
+    );
+  };
+  

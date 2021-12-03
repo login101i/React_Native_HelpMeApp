@@ -2,20 +2,51 @@ import React, { useContext, useState, useEffect } from "react";
 import { ScrollView } from "react-native";
 import { List } from "react-native-paper";
 
-import { CreditCardInput } from "./components/CreditCardInput";
+import { CreditCardInput } from "../components/CreditCardInput";
+import {
+  CartIconContainer,
+  CartIcon,
+  NameInput,
+  ClearButton,
+  PaymentProcessing
+} from "./components/CheckoutStyles";
+import { SafeArea, Text, Spacer } from "../../../components";
 import { CartContext } from "../../../services/cart/cartContext";
-import { SafeArea } from "../../../components/SafeArea";
-import { Text } from "../../../components/Text";
-import { CartIconContainer } from "../components/CheckoutStyles";
-import { CartIcon } from "../components/CheckoutStyles";
-import { Spacer } from "../../../components/Spacer";
-
 import { RestaurantInfoCard } from "../../restaurants/components/RestaurantInfoCard";
+
+import { payRequest } from "../../../services/checkout/CheckoutServise";
 
 const { cart } = useContext(CartContext);
 
-const CheckoutScreen = () => {
+const CheckoutScreen = ({ navigation }) => {
   const { cart, restaurant, sum } = useContext(CartContext);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [name, setName] = useState("");
+
+  const [card, setCard] = useState(null);
+
+  const onPay = () => {
+    setIsLoading(false);
+    if (!card || !card.id) {
+      navigation.navitage("CheckoutError", {
+        error: "Please fill in a valid credit card"
+      });
+      return;
+    }
+    payRequest(card.id, sum, name)
+      .then((result) => {
+        setIsLoading(false);
+        clearCart();
+        navigation.navigate("CheckoutSuccess");
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        navigation.navitage("CheckoutError", {
+          error: err
+        });
+      });
+  };
 
   if (!cart.length || !restaurant) {
     return (
@@ -30,6 +61,8 @@ const CheckoutScreen = () => {
   return (
     <>
       <RestaurantInfoCard restaurant={restaurant} />
+      {isLoading && <PaymentProcessing />}
+
       <ScrollView>
         <Spacer position="top" size="medium">
           <Text>Your order</Text>
@@ -39,9 +72,48 @@ const CheckoutScreen = () => {
               return <List.Item title={`${item} : price ${price / 100}`} />;
             })}
           </List.Section>
-          <Text>Total : {sum/1000}</Text>
+          <Text>Total : {sum / 1000}</Text>
         </Spacer>
-        <CreditCardInput />
+        <NameInput
+          label="Name"
+          value={name}
+          onChangeText={(t) => {
+            setName(t);
+          }}
+        />
+        <Spacer position="top" size="large">
+          {name.length > 0 && (
+            <CreditCardInput
+              neme={name}
+              onSuccess={setCard}
+              onError={() =>
+                navigation.navigate("CheckoutError", {
+                  error: "Something went wrong processing your credit card"
+                })
+              }
+            />
+          )}
+        </Spacer>
+
+        <PayButton
+          disabled={isLoading}
+          icon="cash-usd"
+          mode="contained"
+          onPress={onPay}
+        >
+          Pay
+        </PayButton>
+
+        <Spacer position="top" size="large">
+          <ClearButton
+            disabled={isLoading}
+            icon="cart-off"
+            mode="contained"
+            onPress={clearCart}
+          >
+            Clear Cart
+          </ClearButton>
+        </Spacer>
       </ScrollView>
     </>
   );

@@ -1,12 +1,13 @@
-import React from 'react'
-import {CreditCardInput} from '../components/CreditCardInput'
+import React from "react";
 
-const CheckoutSuccesScreen = () => {
-    return (
-        <div>
-            
-           </div>
-    )
-}
+import { Text, SafeArea} from "../../../components/Text";
+import { CartIconContainer, CartIcon } from "../components/CheckoutStyles";
 
-export default CheckoutSuccesScreen
+export const CheckoutSuccessScreen = () => (
+  <SafeArea>
+    <CartIconContainer>
+      <CartIcon icon="check-bold" />
+      <Text variant="label">Success!</Text>
+    </CartIconContainer>
+  </SafeArea>
+);

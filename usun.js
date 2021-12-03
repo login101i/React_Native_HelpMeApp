@@ -21,3 +21,11 @@ console.log(maxDate(datesArray))
 
 //Output :
 "2021/07/01"
+// -----------------------------------------
+let exercise="Write a function to extract a specified number of characters from a this string"
+
+const cutString=()=>{
+ .......
+}
+
+//Output for number 10 :  Write a fu
